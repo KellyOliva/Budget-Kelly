@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Budget — Kelly</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+  :root {
+    --bg: #F7F4EF;
+    --card: #FFFFFF;
+    --text: #1A1A1A;
+    --muted: #999;
+    --border: #E8E2D9;
+    --accent: #C8603A;
+    --green: #4A7C59;
+    --orange: #E8A045;
+    --red: #C8603A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #F7F4EF;
+    background-image: 
+      radial-gradient(circle at 15% 10%, rgba(232, 114, 154, 0.22) 0%, transparent 40%),
+      radial-gradient(circle at 85% 5%, rgba(74, 124, 89, 0.18) 0%, transparent 35%),
+      radial-gradient(circle at 90% 40%, rgba(200, 96, 58, 0.15) 0%, transparent 30%),
+      radial-gradient(circle at 5% 60%, rgba(91, 141, 184, 0.18) 0%, transparent 35%),
+      radial-gradient(circle at 50% 90%, rgba(212, 168, 83, 0.18) 0%, transparent 40%),
+      radial-gradient(circle at 70% 70%, rgba(155, 107, 181, 0.15) 0%, transparent 30%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg opacity='0.18'%3E%3Ccircle cx='25' cy='25' r='7' fill='%23E8729A'/%3E%3Ccircle cx='25' cy='17' r='5' fill='%23E8729A'/%3E%3Ccircle cx='17' cy='29' r='5' fill='%23E8729A'/%3E%3Ccircle cx='33' cy='29' r='5' fill='%23E8729A'/%3E%3Ccircle cx='25' cy='33' r='5' fill='%23E8729A'/%3E%3Ccircle cx='17' cy='19' r='4' fill='%23E8729A'/%3E%3Ccircle cx='33' cy='19' r='4' fill='%23E8729A'/%3E%3Ccircle cx='25' cy='25' r='3' fill='%23FFD700'/%3E%3Cline x1='25' y1='33' x2='25' y2='46' stroke='%234A7C59' stroke-width='2'/%3E%3Cline x1='25' y1='40' x2='20' y2='45' stroke='%234A7C59' stroke-width='1.5'/%3E%3Ccircle cx='110' cy='55' r='6' fill='%234A7C59'/%3E%3Ccircle cx='110' cy='47' r='4' fill='%234A7C59'/%3E%3Ccircle cx='103' cy='59' r='4' fill='%234A7C59'/%3E%3Ccircle cx='117' cy='59' r='4' fill='%234A7C59'/%3E%3Ccircle cx='110' cy='63' r='4' fill='%234A7C59'/%3E%3Ccircle cx='103' cy='49' r='3.5' fill='%234A7C59'/%3E%3Ccircle cx='117' cy='49' r='3.5' fill='%234A7C59'/%3E%3Ccircle cx='110' cy='55' r='2.5' fill='%23FFD700'/%3E%3Cline x1='110' y1='63' x2='110' y2='76' stroke='%234A7C59' stroke-width='2'/%3E%3Ccircle cx='55' cy='115' r='6' fill='%23C8603A'/%3E%3Ccircle cx='55' cy='107' r='4' fill='%23C8603A'/%3E%3Ccircle cx='48' cy='119' r='4' fill='%23C8603A'/%3E%3Ccircle cx='62' cy='119' r='4' fill='%23C8603A'/%3E%3Ccircle cx='55' cy='123' r='4' fill='%23C8603A'/%3E%3Ccircle cx='48' cy='109' r='3.5' fill='%23C8603A'/%3E%3Ccircle cx='62' cy='109' r='3.5' fill='%23C8603A'/%3E%3Ccircle cx='55' cy='115' r='2.5' fill='%23FFD700'/%3E%3Cline x1='55' y1='123' x2='55' y2='136' stroke='%234A7C59' stroke-width='2'/%3E%3Ccircle cx='135' cy='135' r='5' fill='%235B8DB8'/%3E%3Ccircle cx='135' cy='128' r='3.5' fill='%235B8DB8'/%3E%3Ccircle cx='129' cy='138' r='3.5' fill='%235B8DB8'/%3E%3Ccircle cx='141' cy='138' r='3.5' fill='%235B8DB8'/%3E%3Ccircle cx='135' cy='142' r='3.5' fill='%235B8DB8'/%3E%3Ccircle cx='135' cy='135' r='2' fill='%23FFD700'/%3E%3Cline x1='135' y1='142' x2='135' y2='153' stroke='%234A7C59' stroke-width='2'/%3E%3Ccircle cx='80' cy='145' r='5' fill='%23D4A853'/%3E%3Ccircle cx='80' cy='138' r='3.5' fill='%23D4A853'/%3E%3Ccircle cx='74' cy='148' r='3.5' fill='%23D4A853'/%3E%3Ccircle cx='86' cy='148' r='3.5' fill='%23D4A853'/%3E%3Ccircle cx='80' cy='152' r='3.5' fill='%23D4A853'/%3E%3Ccircle cx='80' cy='145' r='2' fill='%23FFD700'/%3E%3Cline x1='80' y1='152' x2='80' y2='160' stroke='%234A7C59' stroke-width='2'/%3E%3Ccircle cx='140' cy='20' r='4' fill='%239B6BB5'/%3E%3Ccircle cx='140' cy='14' r='3' fill='%239B6BB5'/%3E%3Ccircle cx='135' cy='23' r='3' fill='%239B6BB5'/%3E%3Ccircle cx='145' cy='23' r='3' fill='%239B6BB5'/%3E%3Ccircle cx='140' cy='26' r='3' fill='%239B6BB5'/%3E%3Ccircle cx='140' cy='20' r='1.8' fill='%23FFD700'/%3E%3Cline x1='140' y1='26' x2='140' y2='36' stroke='%234A7C59' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: auto, auto, auto, auto, auto, auto, 160px 160px;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 100px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  header p { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    gap: 4px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 10px 8px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .tab.active {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  /* SECTION */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* MONTH NAV */
+  .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .month-nav button {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    width: 34px; height: 34px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .month-nav button:hover { background: var(--text); color: var(--bg); }
+  .month-nav span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    min-width: 150px;
+    text-align: center;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+
+  .card h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+  }
+
+  /* GAUGE */
+  .gauge-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .gauge-top .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .status-good { background: #E8F4EC; color: #4A7C59; }
+  .status-warn { background: #FDF3E3; color: #C8860A; }
+  .status-over { background: #FDEAE4; color: #C8603A; }
+
+  .gauge-amounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  .spent-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .budget-label { font-size: 0.88rem; color: var(--muted); }
+
+  .gauge-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .gauge-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.5s ease, background 0.3s;
+  }
+
+  .gauge-remaining {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: right;
+  }
+  .gauge-remaining strong { color: var(--text); }
+
+  /* BUDGET EDIT */
+  .budget-edit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .budget-edit label { font-size: 0.8rem; color: var(--muted); flex: 1; }
+
+  .budget-edit input {
+    width: 110px;
+    padding: 7px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    text-align: right;
+  }
+
+  .budget-edit input:focus { border-color: var(--text); }
+
+  .btn-sm {
+    padding: 7px 14px;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-sm:hover { opacity: 0.75; }
+
+  /* FORM */
+  .form-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .form-row input, .form-row select {
+    flex: 1;
+    padding: 11px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-row input:focus, .form-row select:focus { border-color: var(--text); }
+  .form-row input[type="number"] { max-width: 110px; }
+
+  .btn-add {
+    width: 100%;
+    padding: 13px;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 4px;
+  }
+  .btn-add:hover { opacity: 0.8; }
+
+  .input-hint {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .amount-wrap {
+    display: flex;
+    gap: 6px;
+    max-width: 160px;
+    align-items: center;
+  }
+
+  .amount-wrap input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .btn-sign {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--text);
+  }
+
+  .btn-sign.negative {
+    background: #FDEAE4;
+    border-color: #C8603A;
+    color: #C8603A;
+  }
+
+  .btn-sign.positive {
+    background: #E8F4EC;
+    border-color: #4A7C59;
+    color: #4A7C59;
+  }
+
+  .amount-wrap {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex: 1;
+  }
+
+  .amount-wrap input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* BREAKDOWN */
+  .cat-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .cat-name { flex: 1; font-size: 0.85rem; }
+  .cat-bar-wrap { width: 70px; height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .cat-bar-fill { height: 100%; border-radius: 99px; }
+  .cat-amount { font-size: 0.85rem; font-weight: 600; min-width: 65px; text-align: right; }
+
+  /* TRANSACTIONS */
+  .tx-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .tx-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.05rem; margin: 0; }
+  .tx-count { font-size: 0.78rem; color: var(--muted); }
+
+  .tx-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    animation: fadeIn 0.25s ease;
+  }
+  .tx-item:last-child { border-bottom: none; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tx-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .tx-info { flex: 1; min-width: 0; }
+  .tx-name { font-size: 0.88rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tx-meta { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+
+  .tx-amount { font-size: 0.92rem; font-weight: 600; white-space: nowrap; }
+  .tx-amount.negative { color: var(--green); }
+  .tx-amount.positive-spend { color: var(--accent); }
+
+  .tx-delete {
+    background: none; border: none; cursor: pointer;
+    color: var(--border); font-size: 0.9rem; padding: 4px;
+    transition: color 0.2s; line-height: 1; flex-shrink: 0;
+  }
+  .tx-delete:hover { color: var(--red); }
+
+  .empty-state {
+    text-align: center; padding: 28px 0;
+    color: var(--muted); font-size: 0.88rem;
+  }
+  .empty-state .emoji { font-size: 1.8rem; display: block; margin-bottom: 8px; }
+
+  /* CAGNOTTE */
+  .cagnotte-solde {
+    text-align: center;
+    padding: 20px 0 16px;
+  }
+  .cagnotte-solde .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .cagnotte-solde .amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: #4A7C59;
+  }
+  .cagnotte-solde .sublabel {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .cagnotte-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .cagnotte-stat {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--bg);
+  }
+  .cagnotte-stat .stat-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+  }
+  .cagnotte-stat .stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .stat-in { color: #4A7C59; }
+  .stat-out { color: #C8603A; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mon Budget</h1>
+  <p>Kelly · Société Générale</p>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('quotidien')">📅 Quotidien</button>
+  <button class="tab" onclick="showTab('cagnotte')">✨ Cagnotte Extras</button>
+</div>
+
+<!-- ===== SECTION QUOTIDIEN ===== -->
+<div class="section active" id="sec-quotidien">
+
+  <div class="month-nav">
+    <button onclick="changeMonth(-1)">&#8592;</button>
+    <span id="monthLabel"></span>
+    <button onclick="changeMonth(1)">&#8594;</button>
+  </div>
+
+  <!-- GAUGE -->
+  <div class="card">
+    <div class="gauge-top">
+      <span class="label">Dépenses du mois</span>
+      <span id="statusBadge" class="status-badge status-good">✓ OK</span>
+    </div>
+    <div class="gauge-amounts">
+      <span class="spent-amount" id="spentAmount">0 €</span>
+      <span class="budget-label" id="budgetLabel">sur 726,82 €</span>
+    </div>
+    <div class="gauge-bar">
+      <div class="gauge-fill" id="gaugeFill"></div>
+    </div>
+    <div class="gauge-remaining">
+      Il reste <strong id="remainingAmount">726,82 €</strong>
+    </div>
+    <div class="budget-edit">
+      <label>Modifier le budget du mois</label>
+      <input type="number" id="budgetInput" step="0.01" placeholder="726.82" />
+      <button class="btn-sm" onclick="saveBudget()">OK</button>
+    </div>
+  </div>
+
+  <!-- ADD -->
+  <div class="card">
+    <h2>Ajouter une dépense</h2>
+    <p class="input-hint">💡 Appuie sur <strong>−/+</strong> pour basculer dépense/gain</p>
+    <div class="form-row">
+      <input type="text" id="expName" placeholder="Quoi ?" style="flex:1" />
+    </div>
+    <div class="form-row">
+      <div class="amount-wrap" style="flex:1">
+        <button class="btn-sign negative" id="expSign" onclick="toggleSign('exp')" title="Changer signe">−</button>
+        <input type="number" id="expAmount" placeholder="€" step="0.01" min="0" style="flex:1" />
+      </div>
+    </div>
+    <div class="form-row">
+      <select id="expCat">
+        <option value="courses">🛒 Courses</option>
+        <option value="sorties">🍷 Sorties</option>
+        <option value="creativite">🎨 Créativité</option>
+        <option value="maison">🏠 Maison</option>
+        <option value="cadeaux">🎁 Cadeaux</option>
+        <option value="vacances">🌴 Vacances</option>
+        <option value="plaisirs">💅 Plaisirs</option>
+        <option value="vetements">👗 Vêtements</option>
+        <option value="divers">📦 Divers</option>
+      </select>
+      <input type="date" id="expDate" />
+    </div>
+    <button class="btn-add" onclick="addExpense()">+ Ajouter</button>
+  </div>
+
+  <!-- BREAKDOWN -->
+  <div class="card">
+    <h2>Par catégorie</h2>
+    <div id="breakdown"></div>
+  </div>
+
+  <!-- TRANSACTIONS -->
+  <div class="card">
+    <div class="tx-header">
+      <h2>Transactions</h2>
+      <span class="tx-count" id="txCount">0 dépense</span>
+    </div>
+    <div id="txList"></div>
+  </div>
+
+</div>
+
+<!-- ===== SECTION CAGNOTTE ===== -->
+<div class="section" id="sec-cagnotte">
+
+  <!-- SOLDE -->
+  <div class="card">
+    <div class="cagnotte-solde">
+      <div class="label">Solde disponible</div>
+      <div class="amount" id="cagnotteAmount">0 €</div>
+      <div class="sublabel">Cagnotte extras · cumul permanent</div>
+    </div>
+    <div class="cagnotte-stats">
+      <div class="cagnotte-stat">
+        <div class="stat-val stat-in" id="cagnotteIn">0 €</div>
+        <div class="stat-label">Entré</div>
+      </div>
+      <div class="cagnotte-stat">
+        <div class="stat-val stat-out" id="cagnotteOut">0 €</div>
+        <div class="stat-label">Dépensé</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD CAGNOTTE -->
+  <div class="card">
+    <h2>Ajouter un mouvement</h2>
+    <p class="input-hint">💡 Appuie sur <strong>−/+</strong> pour basculer dépense/gain</p>
+    <div class="form-row">
+      <input type="text" id="cagName" placeholder="Quoi ?" style="flex:1" />
+    </div>
+    <div class="form-row">
+      <div class="amount-wrap" style="flex:1">
+        <button class="btn-sign negative" id="cagSign" onclick="toggleSign('cag')" title="Changer signe">−</button>
+        <input type="number" id="cagAmount" placeholder="€" step="0.01" min="0" style="flex:1" />
+      </div>
+    </div>
+    <div class="form-row">
+      <input type="date" id="cagDate" />
+    </div>
+    <button class="btn-add" onclick="addCagnotte()">+ Ajouter</button>
+  </div>
+
+  <!-- HISTORIQUE -->
+  <div class="card">
+    <div class="tx-header">
+      <h2>Historique</h2>
+      <span class="tx-count" id="cagCount">0 mouvement</span>
+    </div>
+    <div id="cagList"></div>
+  </div>
+
+</div>
+
+<script>
+const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const DEFAULT_BUDGET = 726.82;
+
+const CATS = {
+  courses:    { label: 'Courses',      emoji: '🛒', color: '#4A7C59' },
+  sorties:    { label: 'Sorties',      emoji: '🍷', color: '#9B6BB5' },
+  creativite: { label: 'Créativité',   emoji: '🎨', color: '#E8729A' },
+  maison:     { label: 'Maison',       emoji: '🏠', color: '#5B8DB8' },
+  cadeaux:    { label: 'Cadeaux',      emoji: '🎁', color: '#E8603A' },
+  vacances:   { label: 'Vacances',     emoji: '🌴', color: '#2AA198' },
+  plaisirs:   { label: 'Plaisirs',     emoji: '💅', color: '#D4A853' },
+  vetements:  { label: 'Vêtements',    emoji: '👗', color: '#C05B8A' },
+  divers:     { label: 'Divers',       emoji: '📦', color: '#999' },
+};
+
+let now = new Date();
+let currentYear = now.getFullYear();
+let currentMonth = now.getMonth();
+
+function monthKey() { return `${currentYear}-${currentMonth}`; }
+
+function getData() {
+  try { return JSON.parse(localStorage.getItem('budget_kelly_v2') || '{}'); }
+  catch(e) { return {}; }
+}
+function saveData(d) { localStorage.setItem('budget_kelly_v2', JSON.stringify(d)); }
+
+function getMonthBudget() {
+  const d = getData();
+  return d.budgets?.[monthKey()] ?? DEFAULT_BUDGET;
+}
+
+function getMonthExpenses() {
+  const d = getData();
+  return d.expenses?.[monthKey()] || [];
+}
+
+function getCagnotte() {
+  const d = getData();
+  return d.cagnotte || [];
+}
+
+// TAB
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach((t,i) => {
+    t.classList.toggle('active', (i===0 && tab==='quotidien') || (i===1 && tab==='cagnotte'));
+  });
+  document.getElementById('sec-quotidien').classList.toggle('active', tab==='quotidien');
+  document.getElementById('sec-cagnotte').classList.toggle('active', tab==='cagnotte');
+}
+
+// MONTH
+function changeMonth(dir) {
+  currentMonth += dir;
+  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+  if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+  document.getElementById('budgetInput').value = '';
+  renderQuotidien();
+}
+
+// BUDGET EDIT
+function saveBudget() {
+  const val = parseFloat(document.getElementById('budgetInput').value);
+  if (isNaN(val) || val <= 0) return;
+  const d = getData();
+  if (!d.budgets) d.budgets = {};
+  d.budgets[monthKey()] = val;
+  saveData(d);
+  document.getElementById('budgetInput').value = '';
+  renderQuotidien();
+}
+
+// SIGN TOGGLE
+const signs = { exp: -1, cag: -1 };
+
+function toggleSign(prefix) {
+  signs[prefix] *= -1;
+  const btn = document.getElementById(prefix + 'Sign');
+  if (signs[prefix] === -1) {
+    btn.textContent = '−';
+    btn.className = 'btn-sign negative';
+  } else {
+    btn.textContent = '+';
+    btn.className = 'btn-sign positive';
+  }
+}
+
+// ADD EXPENSE
+function addExpense() {
+  const name   = document.getElementById('expName').value.trim();
+  const raw    = parseFloat(document.getElementById('expAmount').value);
+  const amount = isNaN(raw) ? NaN : Math.abs(raw) * signs.exp;
+  const cat    = document.getElementById('expCat').value;
+  const date   = document.getElementById('expDate').value || new Date().toISOString().split('T')[0];
+  if (!name || isNaN(amount)) { flash('expName'); return; }
+  const d = getData();
+  if (!d.expenses) d.expenses = {};
+  if (!d.expenses[monthKey()]) d.expenses[monthKey()] = [];
+  d.expenses[monthKey()].push({ id: Date.now(), name, amount, cat, date });
+  saveData(d);
+  document.getElementById('expName').value = '';
+  document.getElementById('expAmount').value = '';
+  signs.exp = -1;
+  document.getElementById('expSign').textContent = '−';
+  document.getElementById('expSign').className = 'btn-sign negative';
+  renderQuotidien();
+}
+
+function deleteExpense(id) {
+  const d = getData();
+  d.expenses[monthKey()] = (d.expenses[monthKey()] || []).filter(e => e.id !== id);
+  saveData(d);
+  renderQuotidien();
+}
+
+// ADD CAGNOTTE
+function addCagnotte() {
+  const name   = document.getElementById('cagName').value.trim();
+  const raw    = parseFloat(document.getElementById('cagAmount').value);
+  const amount = isNaN(raw) ? NaN : Math.abs(raw) * signs.cag;
+  const date   = document.getElementById('cagDate').value || new Date().toISOString().split('T')[0];
+  if (!name || isNaN(amount)) { flash('cagName'); return; }
+  const d = getData();
+  if (!d.cagnotte) d.cagnotte = [];
+  d.cagnotte.push({ id: Date.now(), name, amount, date });
+  saveData(d);
+  document.getElementById('cagName').value = '';
+  document.getElementById('cagAmount').value = '';
+  signs.cag = -1;
+  document.getElementById('cagSign').textContent = '−';
+  document.getElementById('cagSign').className = 'btn-sign negative';
+  renderCagnotte();
+}
+
+function deleteCagnotte(id) {
+  const d = getData();
+  d.cagnotte = (d.cagnotte || []).filter(e => e.id !== id);
+  saveData(d);
+  renderCagnotte();
+}
+
+function flash(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#C8603A';
+  setTimeout(() => el.style.borderColor = '', 1000);
+}
+
+// RENDER QUOTIDIEN
+function renderQuotidien() {
+  const budget = getMonthBudget();
+  const expenses = getMonthExpenses();
+  const total = expenses.reduce((s,e) => s + e.amount, 0);
+  const pct = Math.min(Math.max((total / budget) * 100, 0), 100);
+  const remaining = budget - total;
+
+  document.getElementById('monthLabel').textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+  document.getElementById('budgetInput').placeholder = budget.toFixed(2).replace('.', ',');
+  document.getElementById('budgetLabel').textContent = `sur ${budget.toFixed(2).replace('.', ',')} €`;
+
+  document.getElementById('spentAmount').textContent = total.toFixed(2).replace('.', ',') + ' €';
+  document.getElementById('remainingAmount').textContent = remaining.toFixed(2).replace('.', ',') + ' €';
+
+  const fill = document.getElementById('gaugeFill');
+  fill.style.width = pct + '%';
+  const badge = document.getElementById('statusBadge');
+  const amt = document.getElementById('spentAmount');
+
+  if (pct < 70) {
+    fill.style.background = '#4A7C59';
+    badge.className = 'status-badge status-good'; badge.textContent = '✓ Dans le budget';
+    amt.style.color = '#4A7C59';
+  } else if (pct < 90) {
+    fill.style.background = '#E8A045';
+    badge.className = 'status-badge status-warn'; badge.textContent = '⚠ Attention';
+    amt.style.color = '#E8A045';
+  } else {
+    fill.style.background = '#C8603A';
+    badge.className = 'status-badge status-over';
+    badge.textContent = total > budget ? '✗ Dépassé' : '! Limite proche';
+    amt.style.color = '#C8603A';
+  }
+
+  // Breakdown
+  const byCat = {};
+  expenses.forEach(e => { if (e.amount > 0) byCat[e.cat] = (byCat[e.cat] || 0) + e.amount; });
+  const bEl = document.getElementById('breakdown');
+  const entries = Object.entries(byCat).sort((a,b) => b[1]-a[1]);
+  if (!entries.length) {
+    bEl.innerHTML = '<p style="color:var(--muted);font-size:0.82rem;text-align:center;padding:8px 0">Aucune dépense ce mois</p>';
+  } else {
+    const mx = Math.max(...entries.map(([,v])=>v));
+    bEl.innerHTML = entries.map(([cat,amt]) => {
+      const c = CATS[cat];
+      return `<div class="cat-row">
+        <div class="cat-dot" style="background:${c.color}"></div>
+        <span class="cat-name">${c.emoji} ${c.label}</span>
+        <div class="cat-bar-wrap"><div class="cat-bar-fill" style="width:${(amt/mx)*100}%;background:${c.color}"></div></div>
+        <span class="cat-amount">${amt.toFixed(2).replace('.', ',')} €</span>
+      </div>`;
+    }).join('');
+  }
+
+  // Transactions
+  const sorted = [...expenses].sort((a,b) => new Date(b.date)-new Date(a.date));
+  document.getElementById('txCount').textContent = expenses.length + (expenses.length > 1 ? ' opérations' : ' opération');
+  const txEl = document.getElementById('txList');
+  if (!sorted.length) {
+    txEl.innerHTML = `<div class="empty-state"><span class="emoji">🌿</span>Aucune dépense ce mois</div>`;
+  } else {
+    txEl.innerHTML = sorted.map(e => {
+      const c = CATS[e.cat];
+      const dateStr = new Date(e.date).toLocaleDateString('fr-FR', {day:'numeric', month:'short'});
+      const isNeg = e.amount < 0;
+      const amtStr = (isNeg ? '+' : '-') + Math.abs(e.amount).toFixed(2).replace('.', ',') + ' €';
+      return `<div class="tx-item">
+        <div class="tx-icon" style="background:${c.color}22">${c.emoji}</div>
+        <div class="tx-info">
+          <div class="tx-name">${e.name}</div>
+          <div class="tx-meta">${c.label} · ${dateStr}</div>
+        </div>
+        <span class="tx-amount ${isNeg ? 'negative' : 'positive-spend'}">${amtStr}</span>
+        <button class="tx-delete" onclick="deleteExpense(${e.id})">✕</button>
+      </div>`;
+    }).join('');
+  }
+}
+
+// RENDER CAGNOTTE
+function renderCagnotte() {
+  const mvts = getCagnotte();
+  const solde = mvts.reduce((s,m) => s + m.amount, 0);
+  const totalIn = mvts.filter(m => m.amount > 0).reduce((s,m) => s + m.amount, 0);
+  const totalOut = mvts.filter(m => m.amount < 0).reduce((s,m) => s + Math.abs(m.amount), 0);
+
+  document.getElementById('cagnotteAmount').textContent = solde.toFixed(2).replace('.', ',') + ' €';
+  document.getElementById('cagnotteAmount').style.color = solde >= 0 ? '#4A7C59' : '#C8603A';
+  document.getElementById('cagnotteIn').textContent = totalIn.toFixed(2).replace('.', ',') + ' €';
+  document.getElementById('cagnotteOut').textContent = totalOut.toFixed(2).replace('.', ',') + ' €';
+
+  document.getElementById('cagCount').textContent = mvts.length + (mvts.length > 1 ? ' mouvements' : ' mouvement');
+
+  const sorted = [...mvts].sort((a,b) => new Date(b.date)-new Date(a.date));
+  const el = document.getElementById('cagList');
+  if (!sorted.length) {
+    el.innerHTML = `<div class="empty-state"><span class="emoji">💰</span>Aucun mouvement pour l'instant</div>`;
+  } else {
+    el.innerHTML = sorted.map(m => {
+      const dateStr = new Date(m.date).toLocaleDateString('fr-FR', {day:'numeric', month:'short', year:'numeric'});
+      const isPos = m.amount > 0;
+      const emoji = isPos ? '➕' : '➖';
+      const color = isPos ? '#E8F4EC' : '#FDEAE4';
+      const amtColor = isPos ? '#4A7C59' : '#C8603A';
+      const amtStr = (isPos ? '+' : '') + m.amount.toFixed(2).replace('.', ',') + ' €';
+      return `<div class="tx-item">
+        <div class="tx-icon" style="background:${color}">${emoji}</div>
+        <div class="tx-info">
+          <div class="tx-name">${m.name}</div>
+          <div class="tx-meta">${dateStr}</div>
+        </div>
+        <span class="tx-amount" style="color:${amtColor}">${amtStr}</span>
+        <button class="tx-delete" onclick="deleteCagnotte(${m.id})">✕</button>
+      </div>`;
+    }).join('');
+  }
+}
+
+// INIT
+document.getElementById('expDate').value = new Date().toISOString().split('T')[0];
+document.getElementById('cagDate').value = new Date().toISOString().split('T')[0];
+document.getElementById('expAmount').addEventListener('keydown', e => { if(e.key==='Enter') addExpense(); });
+document.getElementById('cagAmount').addEventListener('keydown', e => { if(e.key==='Enter') addCagnotte(); });
+
+renderQuotidien();
+renderCagnotte();
+</script>
+</body>
+</html>
